@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  database: signup-dev
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: signup-test
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: signup
+  host: localhost
