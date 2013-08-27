@@ -4,11 +4,17 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:id)
 
-    respond_to do |format|
-      format.html
-      format.csv { send_data @users.to_csv }
+    if !admin_signed_in?
+      redirect_to root_path
+    else
+
+      @users = User.order(:id)
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @users.to_csv }
+      end
     end
   end
 
