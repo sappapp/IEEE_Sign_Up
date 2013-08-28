@@ -10,5 +10,5 @@ test:
 
 production:
   adapter: postgresql
-  database: signup
-  host: localhost
+  encoding: unicode
+  database: signup-production
