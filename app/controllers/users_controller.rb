@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
 
-    if !admin_signed_in?
+    if admin_signed_in?
       redirect_to root_path
     else
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to '/done', notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

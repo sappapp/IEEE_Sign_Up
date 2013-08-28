@@ -24,6 +24,12 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label "Renter Membership ID", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field 'membership_id', :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :major, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :major, :class => 'text_field' %>
@@ -31,8 +37,19 @@
   </div>
   <div class="control-group">
     <%= f.label 'Graduation Year', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :year, :class => 'text_field' %>
+    <div class="btn-group">
+      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <span name='user[year]'>Choose Year</span>
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        
+        <% [0, 1, 2, 3, 4, 5].each do |i| %>
+          <li>
+            <a href="#"><%= Time.now.year + i.to_i %></a>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 

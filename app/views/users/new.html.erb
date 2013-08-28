@@ -1,5 +1,11 @@
 <%- model_class = User -%>
-<div class="page-header">
-  <h1>Sign Up!</h1>
+
+<div class="row-fluid">
+	<div class="page-header">
+	  <h1 class="offset2">Sign Up!</h1>
+	</div>
+
+	<div align="center" class="offset2 span8 offset2*">
+		<%= render :partial => 'form' %>
+	</div>
 </div>
-<%= render :partial => 'form' %>
