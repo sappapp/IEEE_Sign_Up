@@ -1,61 +1,77 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label 'First Name', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :firstname, :class => 'text_field' %>
+  <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+    
+    <div class="control-group">
+      <%= f.label 'First Name', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :firstname, :class => 'text_field' %>
+        &nbsp;
+        <span class="label label-warning" style="display: none;">Missing Information</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label 'Last Name', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :lastname, :class => 'text_field' %>
+    
+    <div class="control-group">
+      <%= f.label 'Last Name', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :lastname, :class => 'text_field' %>
+        &nbsp;
+        <span class="label label-warning" style="display: none;">Missing Information</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
+    
+    <div class="control-group">
+      <%= f.label :email, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :email, :class => 'text_field' %>
+        &nbsp;
+        <span class="label label-warning" style="display: none;">Missing Information</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :membership_id , :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :membership_id, :class => 'text_field' %>
+    
+    <div class="control-group">
+      <%= f.label :membership_id , :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :membership_id, :class => 'text_field' %>
+        &nbsp;
+        <span class="label label-warning" style="display: none;">Membership IDs Do Not Match</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label "Renter Membership ID", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field 'membership_id', :class => 'text_field' %>
+    
+    <div class="control-group">
+      <%= f.label "Renter Membership ID", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field 'membership_id', :class => 'text_field' %>
+        &nbsp;
+        <span class="label label-warning" style="display: none;">Membership IDs Do Not Match</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :major, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :major, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label 'Graduation Year', :class => 'control-label' %>
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        <span name='user[year]'>Choose Year</span>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        
-        <% [0, 1, 2, 3, 4, 5].each do |i| %>
-          <li>
-            <a href="#"><%= Time.now.year + i.to_i %></a>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn' %>
-  </div>
-<% end %>
+    <div class="control-group">
+      <%= f.label 'Major', :class => 'control-label' %>
+      <div class='controls'>
+        <select class="btn btn-info" align="left" name="user[major]">
+          <option value="CpE">Computer Engineering</option>
+          <option value="CS">Computer Science</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="EE">Electrical Engineering</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Year', :class => 'control-label' %>
+      <div class='controls'>
+        <select class="btn btn-info" align="left" name="user[major]">
+          <% for i in 0..4 %>
+            <option value="<%Time.now.year + i %>"><%= Time.now.year + i %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  users_path, :class => 'btn' %>
+    </div>
+  
+  <% end %>

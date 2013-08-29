@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('form#new_user').click(function(e){
+	$('input.btn').click(function(e){
 
 
 		//Verify That All Fields Are Filled In
@@ -12,20 +12,21 @@ $(document).ready(function(){
 			if($textfields[i].value == "")
 			{
 				e.preventDefault();
+				$($textfields.siblings('span.label')[i]).show();
+
+			}
+			else
+			{
+				$($textfields.siblings('span.label')[i]).hide();
 			}
 		}
 
-		if($('.btn.dropdown-toggle')[0].value == null)
+		$membershipId = $('input#user_membership_id');
+		if($membershipId[0].value != $membershipId[1].value)
 		{
 			e.preventDefault();
+			$membershipId.siblings().show();
 		}
 	})
-
-	$(".dropdown-menu li a").click(function(){
-
-      $(".btn:first-child.dropdown-toggle").text($(this).text());
-      $(".btn:first-child.dropdown-toggle").val($(this).text());
-
-   });
 
 })
